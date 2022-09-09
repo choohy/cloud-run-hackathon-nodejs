@@ -35,8 +35,8 @@ app.post('/', function (req, res) {
   playerLocations.forEach((opponent) => {
     switch(direction) {
       case "N": {
-        if (playerLocation[y] == opponent[y]) {
-          if(playerLocation[x] > opponent[x]){
+        if (playerLocation[x] == opponent[x]) {
+          if(playerLocation[y] > opponent[y]){
             action = toss;
             return;
           }
@@ -47,17 +47,6 @@ app.post('/', function (req, res) {
         }
       }
       case "E": {
-        if (playerLocation[x] == opponent[x]) {
-          if (playerLocation[y] < opponent[y]) {
-            action = toss;
-            return;
-          } else {
-            action = right;
-            return;
-          }
-        }
-      }
-      case "S": {
         if (playerLocation[y] == opponent[y]) {
           if (playerLocation[x] < opponent[x]) {
             action = toss;
@@ -68,9 +57,20 @@ app.post('/', function (req, res) {
           }
         }
       }
-      case "W": {
+      case "S": {
         if (playerLocation[x] == opponent[x]) {
-          if (playerLocation[y] > opponent[y]) {
+          if (playerLocation[y] < opponent[y]) {
+            action = toss;
+            return;
+          } else {
+            action = right;
+            return;
+          }
+        }
+      }
+      case "W": {
+        if (playerLocation[y] == opponent[y]) {
+          if (playerLocation[x] > opponent[x]) {
             action = toss;
             return;
           } else {
