@@ -31,7 +31,7 @@ app.post('/', function (req, res) {
     if (element[x]!=playerLocation[0] && element[y]!=playerLocation[1])
       playerLocations.push([element[x], element[y]]);
   });
-
+try{
   playerLocations.forEach((opponent) => {
     if (playerLocation[x] == opponent[x]){
       if (playerLocation[y] - opponent[y] > 3) {
@@ -51,7 +51,6 @@ app.post('/', function (req, res) {
           case "S":
             action = right;
         }
-        break;
       } else if (opponent[y] - playerLocation[y] > 3) {
         switch(direction) {
           case "N":
@@ -69,8 +68,8 @@ app.post('/', function (req, res) {
             }
           }
         }
-        break;
       }
+      throw 'Break';
     }
     if (playerLocation[y] == opponent[y]){
       if (playerLocation[x] - opponent[x] > 3) {
@@ -109,10 +108,13 @@ app.post('/', function (req, res) {
             action = left;
           }
         }
-        break;
       }
+      throw 'Break';
     }
   });
+} catch (e) {
+  if (e !== 'Break') throw e
+}
 
   if (playerLocation[x] == 10 || playerLocation[x] == 0) {
     action = right;
