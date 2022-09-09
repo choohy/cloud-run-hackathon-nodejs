@@ -18,25 +18,27 @@ app.post('/', function (req, res) {
   const direction = myLocation["direction"];
   const x = myLocation["x"];
   const y = myLocation["y"];
+  const opponents = arena["state"]
+
 
   switch(direction) {
     case "N":
-      if (y = 0)
+      if (y < 1)
         action = 2;
       else
         action = 0;
     case "S":
-      if (y = 7)
+      if (y > 7)
         action = 3;
       else
         action = 0;
     case "W":
-      if (x = 0)
+      if (x < 1)
         action = 3
       else
         action = 0;
     case "E":
-      if (x = 7)
+      if (x > 7)
         action = 2;
       else
         action = 0;
