@@ -33,10 +33,57 @@ app.post('/', function (req, res) {
   });
 
   playerLocations.forEach((opponent) => {
+    if (playerLocation[x] == opponent[x]){
+      if (playerLocation[y] - opponent[y] > 3) {
+        switch(direction) {
+          case "N": {
+            if (playerLocation[y] - opponent[y] < 4) {
+              action = toss;
+            }
+            else {
+              action = forward;
+            }
+          }
+          case "W":
+            action = right;
+          case "E":
+            action = left;
+          case "S":
+            action = right;
+        }
+        break;
+      } else if (opponent[y] - playerLocation[y] > 3) {
+        switch(direction) {
+          case "N":
+            action = right;
+          case "W":
+            action = left;
+          case "E":
+            action = right;
+          case "S": {
+            if (opponent[y] - playerLocation[y] < 4) {
+              action = toss;
+            }
+            else {
+              action = forward;
+            }
+            action = forward;
+          }
+        }
+        break;
+      } else {
+        action = toss;
+        break
+      }
+
+    }
+
+
     switch(direction) {
       case "N": {
         if (playerLocation[x] == opponent[x]) {
-          if(playerLocation[y] > opponent[y]){
+
+          if(playerLocation[y] == opponent[y]+1){
             action = toss;
             return;
           }
@@ -48,7 +95,7 @@ app.post('/', function (req, res) {
       }
       case "E": {
         if (playerLocation[y] == opponent[y]) {
-          if (playerLocation[x] < opponent[x]) {
+          if (playerLocation[x] == opponent[x]-1) {
             action = toss;
             return;
           } else {
@@ -59,7 +106,7 @@ app.post('/', function (req, res) {
       }
       case "S": {
         if (playerLocation[x] == opponent[x]) {
-          if (playerLocation[y] < opponent[y]) {
+          if (playerLocation[y] == opponent[y]) {
             action = toss;
             return;
           } else {
@@ -79,19 +126,17 @@ app.post('/', function (req, res) {
           }
         }
       }
-      default: {
-        if (playerLocation[x] == 10 || playerLocation[x] == 0) {
-          action = right;
-          return;
-        } else if (playerLocation[y] == 10 || playerLocation[y] == 0) {
-          action = right;
-          return;
-        } 
-        action = forward;
-      }
+      
     }
   });
 
+  if (playerLocation[x] == 10 || playerLocation[x] == 0) {
+    action = right;
+  } else if (playerLocation[y] == 10 || playerLocation[y] == 0) {
+    action = right;
+  } else
+    action = forward;
+  }
   // switch(direction) {
   //   case "N":
   //     if (y < 10)
