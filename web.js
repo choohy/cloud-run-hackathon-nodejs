@@ -67,68 +67,103 @@ app.post('/', function (req, res) {
             else {
               action = forward;
             }
-            action = forward;
           }
         }
         break;
-      } else {
-        action = toss;
-        break
       }
-
     }
+    if (playerLocation[y] == opponent[y]){
+      if (playerLocation[x] - opponent[x] > 3) {
+        switch(direction) {
+          case "N": 
+            action = left
+          case "W":{
+            if (playerLocation[x] - opponent[x] < 4) {
+              action = toss;
+            }
+            else {
+              action = forward;
+            }
+          }
+          case "E":
+            action = right;
+          case "S":
+            action = right;
+        }
+        break;
+      } else if (opponent[x] - playerLocation[x] > 3) {
+        switch(direction) {
+          case "N":
+            action = right;
+          case "W":
+            action = left;
+          case "E": {
+            if (opponent[x] - playerLocation[x] < 4) {
+              action = toss;
+            }
+            else {
+              action = forward;
+            }
+          }
+          case "S": {
+            action = left;
+          }
+        }
+        break;
+      }
+    }
+  }
 
+  //   switch(direction) {
+  //     case "N": {
+  //       if (playerLocation[x] == opponent[x]) {
 
-    switch(direction) {
-      case "N": {
-        if (playerLocation[x] == opponent[x]) {
-
-          if(playerLocation[y] == opponent[y]+1){
-            action = toss;
-            return;
-          }
-          else {
-            action = right;
-            return;
-          }
-        }
-      }
-      case "E": {
-        if (playerLocation[y] == opponent[y]) {
-          if (playerLocation[x] == opponent[x]-1) {
-            action = toss;
-            return;
-          } else {
-            action = right;
-            return;
-          }
-        }
-      }
-      case "S": {
-        if (playerLocation[x] == opponent[x]) {
-          if (playerLocation[y] == opponent[y]) {
-            action = toss;
-            return;
-          } else {
-            action = right;
-            return;
-          }
-        }
-      }
-      case "W": {
-        if (playerLocation[y] == opponent[y]) {
-          if (playerLocation[x] > opponent[x]) {
-            action = toss;
-            return;
-          } else {
-            action = right;
-            return;
-          }
-        }
-      }
+  //         if(playerLocation[y] == opponent[y]+1){
+  //           action = toss;
+  //           return;
+  //         }
+  //         else {
+  //           action = right;
+  //           return;
+  //         }
+  //       }
+  //     }
+  //     case "E": {
+  //       if (playerLocation[y] == opponent[y]) {
+  //         if (playerLocation[x] == opponent[x]-1) {
+  //           action = toss;
+  //           return;
+  //         } else {
+  //           action = right;
+  //           return;
+  //         }
+  //       }
+  //     }
+  //     case "S": {
+  //       if (playerLocation[x] == opponent[x]) {
+  //         if (playerLocation[y] == opponent[y]) {
+  //           action = toss;
+  //           return;
+  //         } else {
+  //           action = right;
+  //           return;
+  //         }
+  //       }
+  //     }
+  //     case "W": {
+  //       if (playerLocation[y] == opponent[y]) {
+  //         if (playerLocation[x] > opponent[x]) {
+  //           action = toss;
+  //           return;
+  //         } else {
+  //           action = right;
+  //           return;
+  //         }
+  //       }
+  //     }
       
-    }
-  });
+  //   }
+  // });
 
   if (playerLocation[x] == 10 || playerLocation[x] == 0) {
     action = right;
