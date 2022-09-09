@@ -44,11 +44,10 @@ app.post('/', function (req, res) {
         action = 2;
     case "E":
       if (x < 10)
-        action = 0;
+        action = 3;
       else
         action = 2;
-  }  
-  action = 3;
+  }
   // TODO add your implementation here to replace the random response
   res.send[moves[action]];
   // res.send(moves[Math.floor(Math.random() * moves.length)]);
