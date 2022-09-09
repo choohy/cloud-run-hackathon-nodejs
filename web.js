@@ -114,90 +114,13 @@ app.post('/', function (req, res) {
     }
   });
 
-  //   switch(direction) {
-  //     case "N": {
-  //       if (playerLocation[x] == opponent[x]) {
-
-  //         if(playerLocation[y] == opponent[y]+1){
-  //           action = toss;
-  //           return;
-  //         }
-  //         else {
-  //           action = right;
-  //           return;
-  //         }
-  //       }
-  //     }
-  //     case "E": {
-  //       if (playerLocation[y] == opponent[y]) {
-  //         if (playerLocation[x] == opponent[x]-1) {
-  //           action = toss;
-  //           return;
-  //         } else {
-  //           action = right;
-  //           return;
-  //         }
-  //       }
-  //     }
-  //     case "S": {
-  //       if (playerLocation[x] == opponent[x]) {
-  //         if (playerLocation[y] == opponent[y]) {
-  //           action = toss;
-  //           return;
-  //         } else {
-  //           action = right;
-  //           return;
-  //         }
-  //       }
-  //     }
-  //     case "W": {
-  //       if (playerLocation[y] == opponent[y]) {
-  //         if (playerLocation[x] > opponent[x]) {
-  //           action = toss;
-  //           return;
-  //         } else {
-  //           action = right;
-  //           return;
-  //         }
-  //       }
-  //     }
-      
-  //   }
-  // });
-
   if (playerLocation[x] == 10 || playerLocation[x] == 0) {
     action = right;
   } else if (playerLocation[y] == 10 || playerLocation[y] == 0) {
     action = right;
   } else
     action = forward;
-  }
-  // switch(direction) {
-  //   case "N":
-  //     if (y < 10)
-  //       action = 0;
-  //     else {
-  //       if (x < 1)
-  //         action = 3;
-  //       else  
-  //         action = 2;
-  //     }
-  //   case "S":
-  //     if (y > 0)
-  //       action = 0;
-  //     else
-  //       action = 2;
-  //   case "W":
-  //     if (x > 0)
-  //       action = 0;
-  //     else
-  //       action = 2;
-  //   case "E":
-  //     if (x < 10)
-  //       action = 3;
-  //     else
-  //       action = 2;
-  // }
+  
   // TODO add your implementation here to replace the random response
   res.send[moves[action]];
   // res.send(moves[Math.floor(Math.random() * moves.length)]);
