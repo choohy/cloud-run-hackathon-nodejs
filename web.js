@@ -112,7 +112,7 @@ app.post('/', function (req, res) {
         break;
       }
     }
-  }
+  });
 
   //   switch(direction) {
   //     case "N": {
