@@ -23,25 +23,25 @@ app.post('/', function (req, res) {
 
   switch(direction) {
     case "N":
-      if (y < 1)
-        action = 2;
-      else
+      if (y < 10)
         action = 0;
+      else
+        action = 2;
     case "S":
-      if (y > 7)
-        action = 3;
-      else
+      if (y > 0)
         action = 0;
-    case "W":
-      if (x < 1)
-        action = 3
       else
-        action = 0;
-    case "E":
-      if (x > 7)
         action = 2;
-      else
+    case "W":
+      if (x > 0)
         action = 0;
+      else
+        action = 2;
+    case "E":
+      if (x < 10)
+        action = 0;
+      else
+        action = 2;
   }  
   // TODO add your implementation here to replace the random response
   res.send[moves[action]];
